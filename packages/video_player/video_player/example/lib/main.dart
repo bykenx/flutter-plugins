@@ -161,7 +161,8 @@ class _ButterFlyAssetVideoState extends State<_ButterFlyAssetVideo> {
       setState(() {});
     });
     _controller.setLooping(true);
-    _controller.initialize().then((_) => setState(() {}));
+    // set speed to 0.5x
+    _controller.initialize().then((_) => _controller.setSpeed(0.5));
     _controller.play();
   }
 
@@ -190,6 +191,11 @@ class _ButterFlyAssetVideoState extends State<_ButterFlyAssetVideo> {
                   VideoPlayer(_controller),
                   _PlayPauseOverlay(controller: _controller),
                   VideoProgressIndicator(_controller, allowScrubbing: true),
+                  Positioned(
+                    right: 10,
+                    bottom: 10,
+                    child: Text('${_controller.value.speed}x'),
+                  ),
                 ],
               ),
             ),
