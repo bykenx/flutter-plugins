@@ -363,7 +363,7 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
     (speed > _player.rate && !_player.currentItem.canPlayFastForward)
     || (speed < _player.rate && !_player.currentItem.canPlaySlowForward)
   ) {
-    return NULL;
+    return;
   }
   _player.rate = speed;
 }
