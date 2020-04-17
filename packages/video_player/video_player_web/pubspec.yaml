@@ -17,14 +17,24 @@ dependencies:
     sdk: flutter
   meta: ^1.1.7
   video_player_platform_interface:
-    path: ../video_player_platform_interface
+    git:
+      url: https://github.com/bykenx/flutter-plugins.git
+      path: packages/video_player/video_player_platform_interface
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   video_player:
-    path: ../video_player
+    git:
+      url: https://github.com/bykenx/flutter-plugins.git
+      path: packages/video_player/video_player
   pedantic: ^1.8.0
+
+dependency_overrides:
+  video_player_platform_interface:
+    path: ../video_player_platform_interface
+  video_player:
+    path: ../video_player
 
 environment:
   sdk: ">=2.0.0-dev.28.0 <3.0.0"
