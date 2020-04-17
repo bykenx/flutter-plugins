@@ -7,13 +7,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.view.Surface;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.ExoPlaybackException;
-import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.*;
 import com.google.android.exoplayer2.Player.EventListener;
-import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.audio.AudioAttributes;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
@@ -233,6 +228,12 @@ final class VideoPlayer {
   void setVolume(double value) {
     float bracketedValue = (float) Math.max(0.0, Math.min(1.0, value));
     exoPlayer.setVolume(bracketedValue);
+  }
+
+  void setSpeed(double value) {
+    float speedValue = (float) Math.max(0.5, Math.min(2.0, value));
+    PlaybackParameters params = exoPlayer.getPlaybackParameters();
+    exoPlayer.setPlaybackParameters(new PlaybackParameters(speedValue, params.pitch, params.skipSilence));
   }
 
   void seekTo(int location) {

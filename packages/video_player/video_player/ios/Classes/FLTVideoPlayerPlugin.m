@@ -358,6 +358,16 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
   _player.volume = (float)((volume < 0.0) ? 0.0 : ((volume > 1.0) ? 1.0 : volume));
 }
 
+- (void)setSpeed:(double)speed {
+  if (
+    (speed > _player.rate && !_player.currentItem.canPlayFastForward)
+    || (speed < _player.rate && !_player.currentItem.canPlaySlowForward)
+  ) {
+    return NULL;
+  }
+  _player.rate = speed;
+}
+
 - (CVPixelBufferRef)copyPixelBuffer {
   CMTime outputItemTime = [_videoOutput itemTimeForHostTime:CACurrentMediaTime()];
   if ([_videoOutput hasNewPixelBufferForItemTime:outputItemTime]) {
@@ -534,6 +544,8 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
     } else if ([@"setVolume" isEqualToString:call.method]) {
       [player setVolume:[argsMap[@"volume"] doubleValue]];
       result(nil);
+    } else if ([@"setSpeed" isEqualToString:call.method]) {
+      [player setSpeed:[argsMap[@"volume"] doubleValue]];
     } else if ([@"play" isEqualToString:call.method]) {
       [player play];
       result(nil);
