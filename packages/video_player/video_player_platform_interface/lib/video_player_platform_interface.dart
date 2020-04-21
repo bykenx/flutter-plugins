@@ -95,7 +95,7 @@ abstract class VideoPlayerPlatform {
     throw UnimplementedError('setVolume() has not been implemented.');
   }
 
-  // Sets the play spedd to a range between 0.5 and 2.0.
+  /// Sets the play speed to a range between 0.5 and 2.0.
   Future<void> setSpeed(int textureId, double speed) {
     throw UnimplementedError('setSpeed() has not been implemented.');
   }

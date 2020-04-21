@@ -151,7 +151,7 @@ class VideoPlayerValue {
         'buffered: [${buffered.join(', ')}], '
         'isPlaying: $isPlaying, '
         'isLooping: $isLooping, '
-        'isBuffering: $isBuffering'
+        'isBuffering: $isBuffering, '
         'volume: $volume, '
         'speed: $speed, '
         'errorDescription: $errorDescription)';
