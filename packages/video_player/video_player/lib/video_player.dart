@@ -395,6 +395,7 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
           _updatePosition(newPosition);
         },
       );
+      await _applySpeed();
     } else {
       _timer?.cancel();
       await _videoPlayerPlatform.pause(_textureId);
@@ -410,6 +411,9 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
 
   Future<void> _applySpeed() async {
     if (!value.initialized || _isDisposed) {
+      return;
+    }
+    if (!value.isPlaying) {
       return;
     }
     await _videoPlayerPlatform.setSpeed(_textureId, value.speed);

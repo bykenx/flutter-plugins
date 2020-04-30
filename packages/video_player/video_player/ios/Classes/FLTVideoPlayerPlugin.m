@@ -545,7 +545,7 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
       [player setVolume:[argsMap[@"volume"] doubleValue]];
       result(nil);
     } else if ([@"setSpeed" isEqualToString:call.method]) {
-      [player setSpeed:[argsMap[@"volume"] doubleValue]];
+      [player setSpeed:[argsMap[@"speed"] doubleValue]];
     } else if ([@"play" isEqualToString:call.method]) {
       [player play];
       result(nil);
